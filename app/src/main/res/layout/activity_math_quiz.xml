@@ -28,41 +28,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_height="25dp"
-        android:layout_above="@+id/resultsDisplayText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="23dp"
-        android:id="@+id/radioButtonsGroup">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/leftAnswerOptionButton"
-            android:gravity="center_vertical"
-            android:text="Left Answer"
-            android:layout_weight="1"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/middleAnswerOptionButton"
-            android:elevation="13dp"
-            android:text="Middle Answer"
-            android:layout_weight="1"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rightAnswerOptionButton"
-            android:text="Right Answer"
-            android:layout_weight="1"/>
-    </RadioGroup>
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -98,50 +63,38 @@
             android:textSize="50sp"/>
     </LinearLayout>
 
-    <TextView
-        android:text="Correct!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/submitButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
-        android:id="@+id/resultsDisplayText"
-        android:textSize="50sp"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/answerOptionsTextGroup"
-        android:layout_above="@+id/radioGroup3"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="25dp"
+        android:id="@+id/radioButtonsGroup"
+        android:layout_above="@+id/submitButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="19dp"
-        android:layout_marginTop="250dp">
+        android:layout_alignParentStart="true">
 
-        <TextView
-            android:text="48"
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/leftAnswerOptionTextView"
-            android:layout_weight="1"
-            android:textSize="40sp"/>
+            android:id="@+id/leftAnswerOptionButton"
+            android:gravity="center_vertical"
+            android:text="Left Answer"
+            android:layout_weight="1"/>
 
-        <TextView
-            android:text="7"
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/middleAnswerOptionTextView"
-            android:layout_weight="1"
-            android:textSize="40sp"/>
+            android:id="@+id/middleAnswerOptionButton"
+            android:elevation="13dp"
+            android:text="Middle Answer"
+            android:layout_weight="1"/>
 
-        <TextView
-            android:text="15"
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rightAnswerOptionTextView"
-            android:layout_weight="1"
-            android:textSize="40sp"/>
-    </LinearLayout>
+            android:id="@+id/rightAnswerOptionButton"
+            android:text="Right Answer"
+            android:layout_weight="1"/>
+    </RadioGroup>
 
 </RelativeLayout>
