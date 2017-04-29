@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/leftAnswerOptionButton"
             android:gravity="center_vertical"
+            android:text="Left Answer"
             android:layout_weight="1"/>
 
         <RadioButton
@@ -51,12 +52,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/middleAnswerOptionButton"
             android:elevation="13dp"
+            android:text="Middle Answer"
             android:layout_weight="1"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rightAnswerOptionButton"
+            android:text="Right Answer"
             android:layout_weight="1"/>
     </RadioGroup>
 
