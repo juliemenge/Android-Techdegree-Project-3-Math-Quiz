@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MathQuizActivity extends AppCompatActivity {
-
+    // comment
     //Numbers to be added
     private TextView mLeftAdderTextView;
     private TextView mRightAdderTextView;
