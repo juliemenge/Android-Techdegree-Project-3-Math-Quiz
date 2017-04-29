@@ -7,17 +7,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MathQuizActivity extends AppCompatActivity {
 
     //Numbers to be added
     private TextView mLeftAdderTextView;
     private TextView mRightAdderTextView;
-
-    //Answer options
-    private TextView mLeftAnswerOption;
-    private TextView mMiddleAnswerOption;
-    private TextView mRightAnswerOption;
 
     //Answer option buttons and radio group
     private RadioGroup mRadioOptionsGroup;
@@ -27,6 +23,9 @@ public class MathQuizActivity extends AppCompatActivity {
 
     //Submit button
     private Button mSubmitButton;
+
+    //radio button to store the answer the user chooses
+    private RadioButton mAnswerSelectionButton;
 
     //object to create bank of questions
     private QuestionBank mQuestionBank = new QuestionBank();
@@ -40,27 +39,44 @@ public class MathQuizActivity extends AppCompatActivity {
         mLeftAdderTextView = (TextView) findViewById(R.id.leftAdderTextView);
         mRightAdderTextView = (TextView) findViewById(R.id.rightAdderTextView);
 
-        mLeftAnswerOption = (TextView) findViewById(R.id.leftAnswerOptionTextView);
-        mMiddleAnswerOption = (TextView) findViewById(R.id.middleAnswerOptionTextView);
-        mRightAnswerOption = (TextView) findViewById(R.id.rightAnswerOptionTextView);
+        //when app starts, set text of left and right adders to first question in question bank
+        mLeftAdderTextView.setText(mQuestionBank.leftAdders[0]+"");
+        mRightAdderTextView.setText(mQuestionBank.rightAdders[0]+"");
 
+        addListenerOnButton(); //check to see which radio button was selected and toast correct or incorrect
+
+    }
+
+    private void addListenerOnButton() {
+        //assign buttons to corresponding variables
+        mRadioOptionsGroup = (RadioGroup) findViewById(R.id.radioButtonsGroup);
         mLeftAnswerOptionButton = (RadioButton) findViewById(R.id.leftAnswerOptionButton);
         mMiddleAnswerOptionButton = (RadioButton) findViewById(R.id.middleAnswerOptionButton);
         mRightAnswerOptionButton = (RadioButton) findViewById(R.id.rightAnswerOptionButton);
 
         mSubmitButton = (Button) findViewById(R.id.submitButton);
 
-        //make the Submit button do something when it is clicked - right now, just returning which button was clicked
-        View.OnClickListener listener = new View.OnClickListener() {
+        mLeftAnswerOptionButton.setText(mQuestionBank.correctAnswers[0]+"");
+        mMiddleAnswerOptionButton.setText(mQuestionBank.firstIncorrectAnswers[0]+"");
+        mRightAnswerOptionButton.setText(mQuestionBank.secondIncorrectAnswers[0]+"");
 
+        //when the Submit button is clicked, toasts if the answer is correct
+        //TO DO: if statement to see if it matches correct answer in array, after answer displays, show next question
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //when the button is clicked, return which radio button was selected
+                //get selected radio button that the user chose from radio group
+                int selectedId = mRadioOptionsGroup.getCheckedRadioButtonId();
+
+                //find the radio button by its ID
+                mAnswerSelectionButton = (RadioButton) findViewById(selectedId);
+
+                //display a toast message if the user is correct - displaying button text for now, change to correct or incorrect
+                Toast.makeText(MathQuizActivity.this, mAnswerSelectionButton.getText(), Toast.LENGTH_SHORT).show();
+
 
             }
-        };
+        });
 
-        //The button was clicked, so let the user know if the answer is correct
-        mSubmitButton.setOnClickListener(listener);
     }
 }
