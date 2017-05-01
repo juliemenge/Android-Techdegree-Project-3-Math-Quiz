@@ -30,6 +30,9 @@ public class MathQuizActivity extends AppCompatActivity {
     //object to create bank of questions
     private QuestionBank mQuestionBank = new QuestionBank();
 
+    //store the index of where we are in the arrays
+    //int questionIndex = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +42,13 @@ public class MathQuizActivity extends AppCompatActivity {
         mLeftAdderTextView = (TextView) findViewById(R.id.leftAdderTextView);
         mRightAdderTextView = (TextView) findViewById(R.id.rightAdderTextView);
 
+        int questionIndex = 0;
+
         //when app starts, set text of left and right adders to first question in question bank
-        mLeftAdderTextView.setText(mQuestionBank.leftAdders[0]+"");
-        mRightAdderTextView.setText(mQuestionBank.rightAdders[0]+"");
+        mLeftAdderTextView.setText(mQuestionBank.leftAdders[questionIndex]+"");
+        mRightAdderTextView.setText(mQuestionBank.rightAdders[questionIndex]+"");
 
         addListenerOnButton(); //check to see which radio button was selected and toast correct or incorrect
-
     }
 
     private void addListenerOnButton() {
@@ -65,15 +69,19 @@ public class MathQuizActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 //get selected radio button that the user chose from radio group
                 int selectedId = mRadioOptionsGroup.getCheckedRadioButtonId();
 
                 //find the radio button by its ID
                 mAnswerSelectionButton = (RadioButton) findViewById(selectedId);
+                String answerText = (String) mAnswerSelectionButton.getText();
 
                 //display a toast message if the user is correct - displaying button text for now, change to correct or incorrect
-                Toast.makeText(MathQuizActivity.this, mAnswerSelectionButton.getText(), Toast.LENGTH_SHORT).show();
-
+                if((mQuestionBank.leftAdders[0] + mQuestionBank.rightAdders[0]) == Integer.parseInt(answerText)) {
+                    Toast.makeText(MathQuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                } else
+                   Toast.makeText(MathQuizActivity.this, "Incorrect!", Toast.LENGTH_SHORT).show();
 
             }
         });
