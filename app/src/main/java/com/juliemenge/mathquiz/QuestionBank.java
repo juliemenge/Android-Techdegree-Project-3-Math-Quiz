@@ -2,7 +2,6 @@ package com.juliemenge.mathquiz;
 
 public class QuestionBank {
 
-    // stuff2
     // Example for index 0:
     // What is 3 + 4?
     //     10
