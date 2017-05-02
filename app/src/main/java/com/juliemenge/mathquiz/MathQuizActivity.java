@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MathQuizActivity extends AppCompatActivity {
-    // comment
-    //Numbers to be added
+
+    //Numbers to be added together
     private TextView mLeftAdderTextView;
     private TextView mRightAdderTextView;
 
