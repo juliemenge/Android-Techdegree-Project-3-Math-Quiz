@@ -47,12 +47,13 @@ public class MathQuizActivity extends AppCompatActivity {
         mLeftAdderTextView.setText(mQuestionBank.leftAdders[questionIndex]+"");
         mRightAdderTextView.setText(mQuestionBank.rightAdders[questionIndex]+"");
 
-        addListenerOnButton(questionIndex); //check to see which radio button was selected and toast correct or incorrect
-        submitClick(questionIndex); //toast if correct or incorrect after the user hits submit
+        addListenerOnButton(); //check to see which radio button was selected and toast correct or incorrect
+        submitClick(); //toast if correct or incorrect after the user hits submit
+
     }
 
 
-    private void addListenerOnButton(int arrayIndex) {
+    private void addListenerOnButton() {
 
         //assign buttons to corresponding variables
         mRadioOptionsGroup = (RadioGroup) findViewById(R.id.radioButtonsGroup);
@@ -61,12 +62,14 @@ public class MathQuizActivity extends AppCompatActivity {
         mMiddleAnswerOptionButton = (RadioButton) findViewById(R.id.middleAnswerOptionButton);
         mRightAnswerOptionButton = (RadioButton) findViewById(R.id.rightAnswerOptionButton);
 
-        mLeftAnswerOptionButton.setText(mQuestionBank.correctAnswers[arrayIndex] + "");
-        mMiddleAnswerOptionButton.setText(mQuestionBank.firstIncorrectAnswers[arrayIndex] + "");
-        mRightAnswerOptionButton.setText(mQuestionBank.secondIncorrectAnswers[arrayIndex] + "");
+        mLeftAnswerOptionButton.setText(mQuestionBank.correctAnswers[questionIndex] + "");
+        mMiddleAnswerOptionButton.setText(mQuestionBank.firstIncorrectAnswers[questionIndex] + "");
+        mRightAnswerOptionButton.setText(mQuestionBank.secondIncorrectAnswers[questionIndex] + "");
+
+
     }
 
-    private void submitClick(final int arrayIndex) {
+    private void submitClick() {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,19 +82,29 @@ public class MathQuizActivity extends AppCompatActivity {
                 String answerText = (String) mAnswerSelectionButton.getText();
 
                 //display a toast if the user is correct or incorrect
-                if((mQuestionBank.leftAdders[arrayIndex] + mQuestionBank.rightAdders[arrayIndex]) == Integer.parseInt(answerText)) {
+                if((mQuestionBank.leftAdders[questionIndex] + mQuestionBank.rightAdders[questionIndex]) == Integer.parseInt(answerText)) {
                     Toast.makeText(MathQuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
                 } else
                     Toast.makeText(MathQuizActivity.this, "Incorrect!", Toast.LENGTH_SHORT).show();
 
-                //increase the question index by one... should this really go here?
-                questionIndex++;
+                //clear the radio check from the previous question
+                mRadioOptionsGroup.clearCheck();
 
-                //display the next question - but how?
+                //once the app goes through all of the array questions, resets questionIndex to 0 and starts again
+                int maxQuizLength = mQuestionBank.leftAdders.length - 2;
 
+                if(questionIndex > maxQuizLength) {
+                    questionIndex = 0;
+                } else {
+                    questionIndex++;
+                }
+
+                //display the next question
+                mLeftAdderTextView.setText(mQuestionBank.leftAdders[questionIndex]+"");
+                mRightAdderTextView.setText(mQuestionBank.rightAdders[questionIndex]+"");
+                addListenerOnButton();
             }
 
         });
-
     }
 }

@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.juliemenge.mathquiz.MathQuizActivity">
+    tools:context="com.juliemenge.mathquiz.MathQuizActivity"
+    android:background="#179F93">
 
     <TextView
         android:text="What is"
@@ -18,7 +19,8 @@
         android:layout_above="@+id/rightAdderTextView"
         android:layout_centerHorizontal="true"
         android:id="@+id/whatIsTextView"
-        android:textSize="50sp"/>
+        android:textSize="50sp"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:text="SUBMIT"
@@ -26,17 +28,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/submitButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#006c63"
+        android:background="@android:color/white"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/addersTextGroup"
         android:layout_below="@+id/whatIsTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp">
+        android:layout_marginTop="19dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="60dp">
 
         <TextView
             android:text="12"
@@ -44,7 +50,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/leftAdderTextView"
             android:layout_weight="1"
-            android:textSize="50sp"/>
+            android:textSize="70sp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:text="+"
@@ -52,7 +60,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/plusSignTextView"
             android:layout_weight="1"
-            android:textSize="50sp"/>
+            android:textSize="50sp"
+            android:gravity="center_horizontal"
+            android:textColor="#006c63"/>
 
         <TextView
             android:text="36"
@@ -60,16 +70,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/rightAdderTextView"
             android:layout_weight="1"
-            android:textSize="50sp"/>
+            android:textSize="70sp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 
     <RadioGroup
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_height="25dp"
         android:id="@+id/radioButtonsGroup"
         android:layout_above="@+id/submitButton"
+        android:layout_height="200dp"
+        android:paddingBottom="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -77,24 +90,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/leftAnswerOptionButton"
-            android:gravity="center_vertical"
-            android:text="Left Answer"
-            android:layout_weight="1"/>
+            android:text="48"
+            android:layout_weight="1"
+            android:textSize="40sp"
+            android:gravity="center_vertical|center_horizontal|start"
+            android:textColor="@android:color/black"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/middleAnswerOptionButton"
             android:elevation="13dp"
-            android:text="Middle Answer"
-            android:layout_weight="1"/>
+            android:text="15"
+            android:layout_weight="1"
+            android:textSize="40sp"
+            android:gravity="center_vertical|center_horizontal|start"
+            android:textColor="@android:color/black"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rightAnswerOptionButton"
-            android:text="Right Answer"
-            android:layout_weight="1"/>
+            android:text="7"
+            android:layout_weight="1"
+            android:textSize="40sp"
+            android:gravity="center_vertical|center_horizontal|start"
+            android:textColor="@android:color/black"/>
     </RadioGroup>
 
 </RelativeLayout>
